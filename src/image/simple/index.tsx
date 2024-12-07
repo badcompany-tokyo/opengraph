@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import { ImageResponse } from 'hono-og';
+import type { ErrorResponse } from '../../types';
 
 export const simple = new Hono();
 
@@ -7,6 +8,10 @@ simple.get('/', (c) => {
   const title = c.req.query('title');
   const description = c.req.query('description');
   const dark = c.req.query('dark');
+
+  if (!title) {
+    return c.json({ message: 'URL is not set!' } satisfies ErrorResponse, 400);
+  }
 
   let bgColor = '#ffffff';
   let fontColor = '#000000';
