@@ -13,7 +13,9 @@ info.get('/', async (c) => {
 
   try {
     if (urls.length === 1) {
-      return c.json(await fetchOGInfo(urls[0]));
+      const url = urls[0];
+      const ogInfo = await fetchOGInfo(url);
+      return c.json({ url, data: ogInfo });
     }
 
     const ogInfoArr = await Promise.all(
