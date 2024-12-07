@@ -1,9 +1,10 @@
-import { Hono } from 'hono'
+import { Hono } from 'hono';
+import { image } from './image';
+import { info } from './info';
 
-const app = new Hono()
+const app = new Hono();
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+app.route('/image', image);
+app.route('/info', info);
 
-export default app
+export default app;
