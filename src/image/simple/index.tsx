@@ -58,7 +58,7 @@ simple.get('/', (c) => {
       ) : null}
     </div>,
     {
-      width: 1199,
+      width: 1200,
       height: 630,
     },
   );
